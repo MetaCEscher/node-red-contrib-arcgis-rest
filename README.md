@@ -26,6 +26,7 @@ msg.arcgis.errorDetails
 
 
 **If the service requires authentication pass the following to:**
+
 msg.arcgis.authentication.server (required)
 
 msg.arcgis.authentication.username (required)
@@ -40,8 +41,6 @@ msg.arcgis.authentication.tokenDuration (required)
 
 [queryFeatures](https://esri.github.io/arcgis-rest-js/api/feature-layer/queryFeatures/) 
 
-See ESRI's Documentation on queryFeatures It may be possible to pass all values
-
  Pass the following to query back features from a rest service
  
 msg.arcgis.queryFeatures.url
@@ -52,8 +51,6 @@ msg.arcgis.queryFeatures.where
 **Update Features:**
 
 [updateFeatures](https://esri.github.io/arcgis-rest-js/api/feature-layer/updateFeatures/) 
-
-See ESRI's Documentation on updateFeatures It may be possible to pass all values
  
 Pass the following to update features to a rest service
  
@@ -76,8 +73,6 @@ msg.arcgis.updateFeatures.features[0].geometry.spatialReference.wkid (required i
 
 [addFeatures](https://esri.github.io/arcgis-rest-js/api/feature-layer/addFeatures/)
 
-See ESRI's Documentation on addFeatures It may be possible to pass all values
-
 Pass the following to add features to a rest service
  
 msg.arcgis.addFeatures.url (required)
@@ -90,8 +85,11 @@ msg.arcgis.addFeatures.features[0].geometry.y (optional)
 
 msg.arcgis.addFeatures.features[0].geometry.spatialReference.wkid (required if passing x,y)
 
-Delete Features: https://esri.github.io/arcgis-rest-js/api/feature-layer/deleteFeatures/ See ESRI's Documentation on deleteFeatures It may be possible to pass all values
- Pass the following to delete features to a rest service
+**Delete Features:**
+
+ [deleteFeatures](https://esri.github.io/arcgis-rest-js/api/feature-layer/deleteFeatures/)
+
+Pass the following to delete features to a rest service
  
 msg.arcgis.deleteFeatures.url (required)
 
@@ -102,7 +100,6 @@ msg.arcgis.deleteFeatures.objectIds[0] (required)
 
 [getAttachments](https://esri.github.io/arcgis-rest-js/api/feature-layer/getAttachments/)
 
-See ESRI's Documentation on getAttachments  It may be possible to pass all values
 
  Pass the following to return attachment features from a rest service
  
@@ -115,7 +112,6 @@ msg.arcgis.getAttachments.featureId (required)
 
 [queryRelated](https://esri.github.io/arcgis-rest-js/api/feature-layer/queryRelated/)
  
-See ESRI's Documentation on queryRelated It may be possible to pass all values
 
 Pass the following to return related records from a rest service
  
