@@ -1,0 +1,19 @@
+{
+  "name": "node-red-arcgis-rest",
+  "version": "1.0.0",
+  "description": "Utilizes ArcGIS REST JS to query,delete,update or insert rest data",
+  "dependencies": {
+    "@esri/arcgis-rest-feature-layer": "^2.14.1",
+    "@esri/arcgis-rest-auth": "^2.14.1",
+    "isomorphic-form-data": "2.0.0",
+    "cross-fetch": "^3.0.5"
+  },
+  "keywords": [
+    "node-red"
+  ],
+  "node-red": {
+    "nodes": {
+      "ArcGIS-Rest-Feature-Layer": "ArcGIS-Rest-Feature-Layer.js"
+    }
+  }
+}
