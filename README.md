@@ -6,7 +6,7 @@
 
 To install use npm,
 
-npm install node-red-arcgis-rest
+npm install node-red-contrib-arcgis-rest
 
 Use the following link for proper documentation on both ArcGIS Rest js and ArcGIS Rest
 
