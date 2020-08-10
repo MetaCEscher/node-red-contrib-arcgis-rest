@@ -1,5 +1,5 @@
 {
-  "name": "node-red-arcgis-rest",
+  "name": "node-red-contrib-arcgis-rest",
   "version": "1.0.2",
   "description": "Utilizes ArcGIS REST JS to query,delete,update or insert rest data",
   "dependencies": {
