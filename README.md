@@ -1,5 +1,5 @@
-[On Github node-red-arcgis-rest](https://github.com/MetaCEscher/node-red-arcgis-rest)  
-[On npm node-red-arcgis-rest](https://www.npmjs.com/package/node-red-arcgis-rest) 
+[On Github node-red-arcgis-rest](https://github.com/MetaCEscher/node-contrib-red-arcgis-rest)  
+[On npm node-red-arcgis-rest](https://www.npmjs.com/package/node-red-contrib-arcgis-rest) 
 
 ###### **This node leverages The ArcGIS Rest js API to return the following functions:** 
 
