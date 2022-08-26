@@ -1,0 +1,644 @@
+[
+    {
+        "id": "05cf683248872893",
+        "type": "tab",
+        "label": "Examples",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cd536d38061e883b",
+        "type": "ArcGIS-Rest-Feature-Layer",
+        "z": "05cf683248872893",
+        "name": "Query Features",
+        "arcgisType": "queryFeatures",
+        "x": 600,
+        "y": 200,
+        "wires": [
+            [
+                "b4731ca23ab0fb0d"
+            ]
+        ]
+    },
+    {
+        "id": "db95be81414c6762",
+        "type": "inject",
+        "z": "05cf683248872893",
+        "name": "Example #1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/1 0 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "ffa1e0e3a5a5194c"
+            ]
+        ]
+    },
+    {
+        "id": "ffa1e0e3a5a5194c",
+        "type": "change",
+        "z": "05cf683248872893",
+        "name": "Set variables here",
+        "rules": [
+            {
+                "t": "set",
+                "p": "arcgis.queryFeatures.url",
+                "pt": "msg",
+                "to": "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads_Styled/FeatureServer/0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "cd536d38061e883b"
+            ]
+        ]
+    },
+    {
+        "id": "b4731ca23ab0fb0d",
+        "type": "debug",
+        "z": "05cf683248872893",
+        "name": "Response of all features",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "arcgis.response",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "599bc07a63678d1a",
+        "type": "ArcGIS-Rest-Feature-Layer",
+        "z": "05cf683248872893",
+        "name": "Query Features",
+        "arcgisType": "queryFeatures",
+        "x": 600,
+        "y": 280,
+        "wires": [
+            [
+                "76fa0644f6ac885c"
+            ]
+        ]
+    },
+    {
+        "id": "653faa3257ba031f",
+        "type": "inject",
+        "z": "05cf683248872893",
+        "name": "Example #2",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/1 0 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 280,
+        "wires": [
+            [
+                "1b7035e5c0e9b89c"
+            ]
+        ]
+    },
+    {
+        "id": "1b7035e5c0e9b89c",
+        "type": "change",
+        "z": "05cf683248872893",
+        "name": "Set variables here",
+        "rules": [
+            {
+                "t": "set",
+                "p": "arcgis.queryFeatures.url",
+                "pt": "msg",
+                "to": "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads_Styled/FeatureServer/0",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.queryFeatures.where",
+                "pt": "msg",
+                "to": "OBJECTID = 8047",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 280,
+        "wires": [
+            [
+                "599bc07a63678d1a"
+            ]
+        ]
+    },
+    {
+        "id": "76fa0644f6ac885c",
+        "type": "debug",
+        "z": "05cf683248872893",
+        "name": "Response Where OBJECTID = 8047",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "arcgis.response",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5380c80e40c331cd",
+        "type": "comment",
+        "z": "05cf683248872893",
+        "name": "Examples",
+        "info": "Using the change function or just a normal function to set the following variables\n\nmsg.arcgis.queryFeatures.url\n\nmsg.arcgis.queryFeatures.where\n\nExample #1 querys back returning all features(where variable does need need to be set)\n\nExample #2 querys back the feature with OBJECT = 8047.\n\nExample #3 returns an arcgis error code and its details because OBJECTID is misspelled in the where parameters.\n\nExample #4 querys a map server  that requires authentication .\n\nExample #5 Updates a single feature class attribute value.\n\nExample #6 Updates a single feature class geometry.\n\n\nThe output will always be in variable the msg.arcgis.response\n\nSpecifically msg.arcgis.response.features if you're querying a feature service\n\n\nIf something doesn't work always check \n\nmsg.arcgis.error\n\nmsg.arcgis.errorDetails",
+        "x": 200,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "9dacb5b6edc83ee5",
+        "type": "ArcGIS-Rest-Feature-Layer",
+        "z": "05cf683248872893",
+        "name": "Query Features",
+        "arcgisType": "queryFeatures",
+        "x": 620,
+        "y": 360,
+        "wires": [
+            [
+                "3aa6412c56d14dab",
+                "befea33152baa44a"
+            ]
+        ]
+    },
+    {
+        "id": "a6bcb66ca6c5da72",
+        "type": "inject",
+        "z": "05cf683248872893",
+        "name": "Example #3",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/1 0 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 360,
+        "wires": [
+            [
+                "f6a001eff8a5076f"
+            ]
+        ]
+    },
+    {
+        "id": "befea33152baa44a",
+        "type": "debug",
+        "z": "05cf683248872893",
+        "name": "Response of Error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "arcgis.error",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "3aa6412c56d14dab",
+        "type": "debug",
+        "z": "05cf683248872893",
+        "name": "Response of Error Details",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "arcgis.errorDetails",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "f6a001eff8a5076f",
+        "type": "change",
+        "z": "05cf683248872893",
+        "name": "Set variables here",
+        "rules": [
+            {
+                "t": "set",
+                "p": "arcgis.queryFeatures.url",
+                "pt": "msg",
+                "to": "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads_Styled/FeatureServer/0",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.queryFeatures.where",
+                "pt": "msg",
+                "to": "BJECTID = 8047",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 360,
+        "wires": [
+            [
+                "9dacb5b6edc83ee5"
+            ]
+        ]
+    },
+    {
+        "id": "8788b342cd87df9e",
+        "type": "ArcGIS-Rest-Feature-Layer",
+        "z": "05cf683248872893",
+        "name": "Query Features",
+        "arcgisType": "queryFeatures",
+        "x": 600,
+        "y": 500,
+        "wires": [
+            [
+                "1b741a53158545be"
+            ]
+        ]
+    },
+    {
+        "id": "0adef36bcedf028c",
+        "type": "inject",
+        "z": "05cf683248872893",
+        "name": "Example #4",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/1 0 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 500,
+        "wires": [
+            [
+                "c9636c8578ad7b29"
+            ]
+        ]
+    },
+    {
+        "id": "c9636c8578ad7b29",
+        "type": "change",
+        "z": "05cf683248872893",
+        "name": "Set variables here",
+        "rules": [
+            {
+                "t": "set",
+                "p": "arcgis.queryFeatures.url",
+                "pt": "msg",
+                "to": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Wildfire_secure_ac/MapServer",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.authentication.username",
+                "pt": "msg",
+                "to": "user1",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.authentication.password",
+                "pt": "msg",
+                "to": "user1",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.authentication.tokenDuration",
+                "pt": "msg",
+                "to": "86400",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.authentication.server",
+                "pt": "msg",
+                "to": "https://sampleserver6.arcgisonline.com/arcgis/",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 500,
+        "wires": [
+            [
+                "8788b342cd87df9e"
+            ]
+        ]
+    },
+    {
+        "id": "1b741a53158545be",
+        "type": "debug",
+        "z": "05cf683248872893",
+        "name": "Response of authenticated map service",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "arcgis",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "84320aea2f7cfeef",
+        "type": "ArcGIS-Rest-Feature-Layer",
+        "z": "05cf683248872893",
+        "name": "Update Features",
+        "arcgisType": "updateFeatures",
+        "x": 610,
+        "y": 640,
+        "wires": [
+            [
+                "870af02c2765e6bb"
+            ]
+        ]
+    },
+    {
+        "id": "5928f72677a91fa5",
+        "type": "inject",
+        "z": "05cf683248872893",
+        "name": "Example #5",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/1 0 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 640,
+        "wires": [
+            [
+                "75e734458db4235b"
+            ]
+        ]
+    },
+    {
+        "id": "75e734458db4235b",
+        "type": "change",
+        "z": "05cf683248872893",
+        "name": "Set variables here",
+        "rules": [
+            {
+                "t": "set",
+                "p": "arcgis.updateFeatures.url",
+                "pt": "msg",
+                "to": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Military/FeatureServer/3",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.updateFeatures.features[0].attributes.ObjectId",
+                "pt": "msg",
+                "to": "1120103",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.updateFeatures.features[0].attributes.additionalinformation",
+                "pt": "msg",
+                "to": "NODE-RED-TEST",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 640,
+        "wires": [
+            [
+                "84320aea2f7cfeef"
+            ]
+        ]
+    },
+    {
+        "id": "870af02c2765e6bb",
+        "type": "debug",
+        "z": "05cf683248872893",
+        "name": "Updating attribute value of feature class",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "arcgis.response",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "7d5c15ed3c6b93c8",
+        "type": "ArcGIS-Rest-Feature-Layer",
+        "z": "05cf683248872893",
+        "name": "Update Features",
+        "arcgisType": "updateFeatures",
+        "x": 610,
+        "y": 740,
+        "wires": [
+            [
+                "36ccd5699f391a11"
+            ]
+        ]
+    },
+    {
+        "id": "bfa96e6619343c62",
+        "type": "inject",
+        "z": "05cf683248872893",
+        "name": "Example #6",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/1 0 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 740,
+        "wires": [
+            [
+                "ee8972390dc52dcb"
+            ]
+        ]
+    },
+    {
+        "id": "ee8972390dc52dcb",
+        "type": "change",
+        "z": "05cf683248872893",
+        "name": "Set variables here",
+        "rules": [
+            {
+                "t": "set",
+                "p": "arcgis.updateFeatures.url",
+                "pt": "msg",
+                "to": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Military/FeatureServer/3",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.updateFeatures.features[0].attributes.ObjectId",
+                "pt": "msg",
+                "to": "1120103",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.updateFeatures.features[0].geometry.y",
+                "pt": "msg",
+                "to": "32.707138",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.updateFeatures.features[0].geometry.x",
+                "pt": "msg",
+                "to": "-117.162498",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "arcgis.updateFeatures.features[0].geometry.spatialReference.wkid",
+                "pt": "msg",
+                "to": "4326",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 740,
+        "wires": [
+            [
+                "7d5c15ed3c6b93c8"
+            ]
+        ]
+    },
+    {
+        "id": "36ccd5699f391a11",
+        "type": "debug",
+        "z": "05cf683248872893",
+        "name": "Updating X and Y of Feature Class",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "arcgis.response",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 740,
+        "wires": []
+    }
+]

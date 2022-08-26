@@ -16,7 +16,9 @@ module.exports = function(RED) {
                         authentication  = new UserSession(msg.arcgis.authentication);
                         authentication.getToken(msg.arcgis.queryFeatures.url).catch(error => {
                             msg.arcgis.error = error;
-                            msg.arcgis.errorDetails = error.response.error;
+                            if(error.response){
+                                msg.arcgis.errorDetails = error.response.error;
+                            }
                             node.send(msg);
                         });
                         msg.arcgis.queryFeatures.authentication = authentication;
@@ -25,7 +27,9 @@ module.exports = function(RED) {
                         authentication  = new UserSession(msg.arcgis.authentication);
                         authentication.getToken(msg.arcgis.updateFeatures.url).catch(error => {
                             msg.arcgis.error = error;
-                            msg.arcgis.errorDetails = error.response.error;
+                            if(error.response){
+                                msg.arcgis.errorDetails = error.response.error;
+                            }
                             node.send(msg);
                         });
                         msg.arcgis.updateFeatures.authentication = authentication;
@@ -34,7 +38,9 @@ module.exports = function(RED) {
                         authentication  = new UserSession(msg.arcgis.authentication);
                         authentication.getToken(msg.arcgis.addFeatures.url).catch(error => {
                             msg.arcgis.error = error;
-                            msg.arcgis.errorDetails = error.response.error;
+                            if(error.response){
+                                msg.arcgis.errorDetails = error.response.error;
+                            }
                             node.send(msg);
                         });
                         msg.arcgis.addFeatures.authentication = authentication;
@@ -43,7 +49,9 @@ module.exports = function(RED) {
                         authentication  = new UserSession(msg.arcgis.authentication);
                         authentication.getToken(msg.arcgis.deleteFeatures.url).catch(error => {
                             msg.arcgis.error = error;
-                            msg.arcgis.errorDetails = error.response.error;
+                            if(error.response){
+                                msg.arcgis.errorDetails = error.response.error;
+                            }
                             node.send(msg);
                         });
                         msg.arcgis.deleteFeatures.authentication = authentication;
@@ -52,7 +60,9 @@ module.exports = function(RED) {
                         authentication  = new UserSession(msg.arcgis.authentication);
                         authentication.getToken(msg.arcgis.getAttachments.url).catch(error => {
                             msg.arcgis.error = error;
-                            msg.arcgis.errorDetails = error.response.error;
+                            if(error.response){
+                                msg.arcgis.errorDetails = error.response.error;
+                            }
                             node.send(msg);
                         });
                         msg.arcgis.getAttachments.authentication = authentication;
@@ -61,7 +71,9 @@ module.exports = function(RED) {
                         authentication  = new UserSession(msg.arcgis.authentication);
                         authentication.getToken(msg.arcgis.queryRelated.url).catch(error => {
                             msg.arcgis.error = error;
-                            msg.arcgis.errorDetails = error.response.error;
+                            if(error.response){
+                                msg.arcgis.errorDetails = error.response.error;
+                            }
                             node.send(msg);
                         });
                         msg.arcgis.queryRelated.authentication = authentication;
@@ -73,7 +85,9 @@ module.exports = function(RED) {
                     queryFeatures(msg.arcgis.queryFeatures)
                         .catch(error => {
                             msg.arcgis.error = error;
-                            msg.arcgis.errorDetails = error.response.error;
+                            if(error.response){
+                                msg.arcgis.errorDetails = error.response.error;
+                            }
                             node.send(msg);
                         }).then(response => {
                         msg.arcgis.response = response;
@@ -83,7 +97,9 @@ module.exports = function(RED) {
                 updateFeatures(msg.arcgis.updateFeatures)
                     .catch(error => {
                         msg.arcgis.error = error;
-                        msg.arcgis.errorDetails = error.response.error;
+                        if(error.response){
+                            msg.arcgis.errorDetails = error.response.error;
+                        }
                         node.send(msg);
                     })
                     .then(response => {
@@ -94,7 +110,9 @@ module.exports = function(RED) {
                 addFeatures(msg.arcgis.addFeatures)
                     .catch(error => {
                         msg.arcgis.error = error;
-                        msg.arcgis.errorDetails = error.response.error;
+                        if(error.response){
+                            msg.arcgis.errorDetails = error.response.error;
+                        }
                         node.send(msg);
                     }).then(response => {
                     msg.arcgis.response = response;
@@ -104,7 +122,9 @@ module.exports = function(RED) {
                 deleteFeatures(msg.arcgis.deleteFeatures)
                     .catch(error => {
                         msg.arcgis.error = error;
-                        msg.arcgis.errorDetails = error.response.error;
+                        if(error.response){
+                            msg.arcgis.errorDetails = error.response.error;
+                        }
                         node.send(msg);
                     })
                     .then(response => {
@@ -115,7 +135,9 @@ module.exports = function(RED) {
                     getAttachments(msg.arcgis.getAttachments)
                         .catch(error => {
                             msg.arcgis.error = error;
-                            msg.arcgis.errorDetails = error.response.error;
+                            if(error.response){
+                                msg.arcgis.errorDetails = error.response.error;
+                            }
                             node.send(msg);
                         })
                         .then(response => {
@@ -126,7 +148,9 @@ module.exports = function(RED) {
                     queryRelated(msg.arcgis.queryRelated)
                         .catch(error => {
                             msg.arcgis.error = error;
-                            msg.arcgis.errorDetails = error.response.error;
+                            if(error.response){
+                                msg.arcgis.errorDetails = error.response.error;
+                            }
                             node.send(msg);
                         })
                         .then(response => {
